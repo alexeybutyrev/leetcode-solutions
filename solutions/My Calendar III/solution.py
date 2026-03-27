@@ -1,0 +1,24 @@
+# Problem: My Calendar III
+# Language: python3
+# Runtime: 3363 ms
+# Memory: 14.8 MB
+
+from sortedcontainers import SortedList
+class MyCalendarThree:
+
+    def __init__(self):
+        self.A = SortedList()
+
+    def book(self, start: int, end: int) -> int:
+        self.A.add((start,1))
+        self.A.add((end,-1))
+        x=ans = 0
+        for _,a in self.A:
+            x += a
+            ans = max(ans,x)
+        return ans
+
+
+# Your MyCalendarThree object will be instantiated and called as such:
+# obj = MyCalendarThree()
+# param_1 = obj.book(start,end)

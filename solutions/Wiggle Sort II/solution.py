@@ -1,0 +1,14 @@
+# Problem: Wiggle Sort II
+# Language: python3
+# Runtime: 296 ms
+# Memory: 16.8 MB
+
+class Solution:
+    def wiggleSort(self, nums: List[int]) -> None:
+        """
+        Do not return anything, modify nums in-place instead.
+        """
+        nums.sort()
+        half = len(nums[::2])
+        nums[::2], nums[1::2] = nums[:half][::-1], nums[half:][::-1]
+            
