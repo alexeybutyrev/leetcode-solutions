@@ -1,0 +1,3 @@
+**Topics:** `array` `hash-table` `string`
+**Difficulty:** `Medium`
+**LeetCode:** https://leetcode.com/problems/evaluate-the-bracket-pairs-of-a-string/

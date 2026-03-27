@@ -1,0 +1,3 @@
+**Topics:** `array` `hash-table` `string` `sorting`
+**Difficulty:** `Medium`
+**LeetCode:** https://leetcode.com/problems/alert-using-same-key-card-three-or-more-times-in-a-one-hour-period/

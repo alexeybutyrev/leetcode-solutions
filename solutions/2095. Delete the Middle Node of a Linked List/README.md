@@ -1,0 +1,3 @@
+**Topics:** `linked-list` `two-pointers`
+**Difficulty:** `Medium`
+**LeetCode:** https://leetcode.com/problems/delete-the-middle-node-of-a-linked-list/

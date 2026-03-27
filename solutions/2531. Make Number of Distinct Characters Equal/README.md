@@ -1,0 +1,3 @@
+**Topics:** `hash-table` `string` `counting`
+**Difficulty:** `Medium`
+**LeetCode:** https://leetcode.com/problems/make-number-of-distinct-characters-equal/

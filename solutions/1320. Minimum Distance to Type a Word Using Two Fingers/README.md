@@ -1,0 +1,3 @@
+**Topics:** `string` `dynamic-programming`
+**Difficulty:** `Hard`
+**LeetCode:** https://leetcode.com/problems/minimum-distance-to-type-a-word-using-two-fingers/

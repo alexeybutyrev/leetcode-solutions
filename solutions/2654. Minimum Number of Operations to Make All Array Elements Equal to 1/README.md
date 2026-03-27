@@ -1,0 +1,3 @@
+**Topics:** `array` `math` `number-theory`
+**Difficulty:** `Medium`
+**LeetCode:** https://leetcode.com/problems/minimum-number-of-operations-to-make-all-array-elements-equal-to-1/

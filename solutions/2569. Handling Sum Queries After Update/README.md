@@ -1,0 +1,3 @@
+**Topics:** `array` `segment-tree`
+**Difficulty:** `Hard`
+**LeetCode:** https://leetcode.com/problems/handling-sum-queries-after-update/

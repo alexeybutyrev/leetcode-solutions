@@ -1,0 +1,3 @@
+**Topics:** `math` `recursion`
+**Difficulty:** `Medium`
+**LeetCode:** https://leetcode.com/problems/count-collisions-of-monkeys-on-a-polygon/

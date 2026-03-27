@@ -1,0 +1,3 @@
+**Topics:** `database`
+**Difficulty:** `Medium`
+**LeetCode:** https://leetcode.com/problems/customers-who-bought-products-a-and-b-but-not-c/

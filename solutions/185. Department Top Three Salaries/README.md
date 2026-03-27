@@ -1,0 +1,3 @@
+**Topics:** `database`
+**Difficulty:** `Hard`
+**LeetCode:** https://leetcode.com/problems/department-top-three-salaries/

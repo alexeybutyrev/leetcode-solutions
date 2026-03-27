@@ -1,0 +1,3 @@
+**Topics:** `string`
+**Difficulty:** `Easy`
+**LeetCode:** https://leetcode.com/problems/check-if-strings-can-be-made-equal-with-operations-i/

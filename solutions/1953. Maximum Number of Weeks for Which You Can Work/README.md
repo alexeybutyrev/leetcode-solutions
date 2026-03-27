@@ -1,0 +1,3 @@
+**Topics:** `array` `greedy`
+**Difficulty:** `Medium`
+**LeetCode:** https://leetcode.com/problems/maximum-number-of-weeks-for-which-you-can-work/

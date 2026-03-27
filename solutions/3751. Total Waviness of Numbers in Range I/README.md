@@ -1,0 +1,3 @@
+**Topics:** `math` `dynamic-programming` `enumeration`
+**Difficulty:** `Medium`
+**LeetCode:** https://leetcode.com/problems/total-waviness-of-numbers-in-range-i/
