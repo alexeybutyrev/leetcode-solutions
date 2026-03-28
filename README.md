@@ -2,6 +2,7 @@
 
 [![LeetCode](https://img.shields.io/badge/LeetCode-alexey__wish-orange?style=flat-square&logo=leetcode)](https://leetcode.com/u/alexey_wish/)
 [![GitHub](https://img.shields.io/badge/GitHub-alexeybutyrev-blue?style=flat-square&logo=github)](https://github.com/alexeybutyrev)
+[![GitHub Pages](https://img.shields.io/badge/Docs-GitHub%20Pages-green?style=flat-square)](https://alexeybutyrev.github.io/leetcode-solutions/)
 
 > My personal collection of LeetCode solutions, automatically scraped and organized.
 
@@ -13,7 +14,13 @@
 | **Solutions in Repo** | 1,946 |
 | **Solution Files** | 1,947 |
 
-> ⚠️ **Note:** ~583 solutions couldn't be fetched because LeetCode's API doesn't return code for older submissions. The metadata exists, but the actual code is no longer stored by LeetCode.
+> ⚠️ **Note:** ~583 solutions couldn't be fetched because LeetCode's API doesn't return code for older submissions.
+
+## 🔍 Search Solutions
+
+**[📊 Open Interactive Index →](https://alexeybutyrev.github.io/leetcode-solutions/)**
+
+Filter by difficulty, topic, or search by problem name. No need to scroll through thousands of lines!
 
 ## 🗂️ Structure
 
@@ -25,7 +32,7 @@ solutions/
 ├── 2. Add Two Numbers/
 │   ├── solution.py
 │   └── README.md
-└── ...
+└── ... (1,946 problems)
 ```
 
 Each problem folder contains:
