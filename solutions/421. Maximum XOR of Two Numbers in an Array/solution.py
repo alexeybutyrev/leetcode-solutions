@@ -1,38 +1,45 @@
 # Problem: Maximum XOR of Two Numbers in an Array
-# Language: python3
-# Runtime: 748 ms
-# Memory: 102.6 MB
+# Language: python
+# Runtime: 1136 ms
+# Memory: 51.7 MB
 
-class Solution:
-    def findMaximumXOR(self, nums: List[int]) -> int:
-        L = len(bin(max(nums))) - 2
+class Trie:
+    def __init__(self, size=32):
+        self.size = size
+        self._trie = {}
+    
+    def add(self, n):
+        trie  = self._trie
         
-        nums = [[(x >> i) & 1 for i in range(L)][::-1] for x in nums]
+        for i in range(self.size, -1, -1):
+            bit = bool(n & (1 << i))
+            if bit not in trie:
+                trie[bit] = {}
+            trie = trie[bit]
+    
+    def max_xor(self, n):
+        trie = self._trie
+        xor = 0
         
+        for i in range(self.size, -1,-1):
+            bit = bool(n & (1 << i))
+            if 1 - bit in trie:
+                xor |= (1 << i)
+                trie = trie[1- bit]
+            else:
+                trie = trie[bit]
         
-        trie = {}
+        return xor
+        
+class Solution(object):
+    def findMaximumXOR(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+        T = Trie(size = max(nums).bit_length())
         
         for n in nums:
-            node = trie
-            for d in n:
-                if d not in node:
-                    node[d] = {}
-                    
-                node = node[d]
-                
-        max_xor = 0
-        for num in nums:
-            xor_node = trie
-            curr_xor = 0
-            for bit in num:
-                opp_bit = 1 - bit
-                if opp_bit in xor_node:
-                    curr_xor = (curr_xor << 1) | 1
-                    xor_node = xor_node[opp_bit]
-                else:
-                    curr_xor <<= 1
-                    xor_node = xor_node[bit]
-            
-            max_xor = max(max_xor, curr_xor)
+            T.add(n)
         
-        return max_xor
+        return max([T.max_xor(n) for n in nums])

@@ -1,32 +1,39 @@
 # Problem: Binary Tree Level Order Traversal
-# Language: python3
-# Runtime: 36 ms
-# Memory: 14.6 MB
+# Language: python
+# Runtime: 24 ms
+# Memory: 13.7 MB
 
 # Definition for a binary tree node.
-# class TreeNode:
-#     def __init__(self, val=0, left=None, right=None):
-#         self.val = val
-#         self.left = left
-#         self.right = right
-class Solution:
-    def levelOrder(self, root: TreeNode) -> List[List[int]]:
+# class TreeNode(object):
+#     def __init__(self, x):
+#         self.val = x
+#         self.left = None
+#         self.right = None
+
+class Solution(object):
+    def levelOrder(self, root):
+        """
+        :type root: TreeNode
+        :rtype: List[List[int]]
+        """
+        levels = []
         if not root:
-            return []
-        q = deque([root])
-        ans = []
-        while q:
-            L = len(q)
-            to_add = []
-            for _ in range(L):
-                node = q.popleft()
-                to_add.append(node.val)
-                
-                if node.left:
-                    q.append(node.left)
-                if node.right:
-                    q.append(node.right)
-                
-            ans.append(to_add)
+            return levels
         
-        return ans
+        def helper(node, level):
+            # start the current level
+            if len(levels) == level:
+                levels.append([])
+
+            # append the current node value
+            levels[level].append(node.val)
+
+            # process child nodes for the next level
+            if node.left:
+                helper(node.left, level + 1)
+            if node.right:
+                helper(node.right, level + 1)
+            
+        helper(root, 0)
+        return levels
+    

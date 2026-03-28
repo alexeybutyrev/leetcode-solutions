@@ -1,6 +1,6 @@
 # Problem: Minimum Add to Make Parentheses Valid
 # Language: python3
-# Runtime: 28 ms
+# Runtime: 32 ms
 # Memory: 14.3 MB
 
 class Solution:

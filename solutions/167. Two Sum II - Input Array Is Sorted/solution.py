@@ -1,23 +1,29 @@
 # Problem: Two Sum II - Input Array Is Sorted
-# Language: python3
-# Runtime: 175 ms
-# Memory: 14.8 MB
+# Language: python
+# Runtime: 48 ms
+# Memory: 11.9 MB
 
-class Solution:
-    def twoSum(self, A: List[int], target: int) -> List[int]:
-        
-        N = len(A)
-        i = 0 
-        j = N-1
-        while i < N and j < N:
-            if A[i] + A[j] == target:
-                return [i+1,j+1]
+class Solution(object):
+    def twoSum(self, numbers, target):
+        """
+        :type numbers: List[int]
+        :type target: int
+        :rtype: List[int]
+        """
+        left, right = 0, len(numbers) - 1
+
+        while left < right:
             
-            if A[i] + A[j] < target:
-                i += 1
+            s = numbers[left] + numbers[right] 
+            
+            if s == target:
+                return [left+1, right+1]
+            
+            if s < target:
+                left +=1
             else:
-                j -=1
+                right -=1
                 
         
-        return [-1,-1]
-            
+        return []
+        

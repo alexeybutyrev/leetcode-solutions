@@ -1,10 +1,11 @@
 # Problem: Longest Palindromic Subsequence
 # Language: python3
-# Runtime: 400 ms
-# Memory: 21.1 MB
+# Runtime: 416 ms
+# Memory: 21.4 MB
 
 class Solution:
     def longestPalindromeSubseq(self, S: str) -> int:
+        
         @cache
         def dp(s):
             
@@ -16,3 +17,5 @@ class Solution:
             return ans
                 
         return dp(S) 
+                    
+                

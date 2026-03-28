@@ -1,7 +1,7 @@
 # Problem: Minimum Number of Swaps to Make the String Balanced
 # Language: python3
-# Runtime: 160 ms
-# Memory: 28 MB
+# Runtime: 340 ms
+# Memory: 25.6 MB
 
 class Solution:
     def minSwaps(self, s: str) -> int:

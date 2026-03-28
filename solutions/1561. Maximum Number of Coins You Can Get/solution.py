@@ -1,22 +1,21 @@
 # Problem: Maximum Number of Coins You Can Get
 # Language: python3
-# Runtime: 644 ms
-# Memory: 26.9 MB
+# Runtime: 2504 ms
+# Memory: 22.4 MB
 
 class Solution:
-    def maxCoins(self, A: List[int]) -> int:
-        A.sort(reverse=True)
-        A =deque(A)
+    def maxCoins(self, piles: List[int]) -> int:
+        piles.sort(reverse=True)
+        print(piles)
         
-        x,y,z=0,0,0
-        while A:
-            if len(A) >= 3:
-                x += A.popleft()
-                y += A.popleft()
-                z += A.pop()
-            elif len(A) == 2:
-                x += A.popleft()
-                y += A.popleft()
-            else:
-                return y
-        return y
+        k = len(piles) // 3
+        
+        #count = piles[1]
+        count = 0
+        for i in range(k):   
+            v1 = piles.pop(0)
+            v2 = piles.pop(0)
+            v3 = piles.pop()
+            count += v2
+            
+        return count

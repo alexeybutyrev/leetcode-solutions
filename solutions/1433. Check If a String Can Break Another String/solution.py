@@ -1,7 +1,7 @@
 # Problem: Check If a String Can Break Another String
 # Language: python3
-# Runtime: 228 ms
-# Memory: 16.4 MB
+# Runtime: 356 ms
+# Memory: 16.2 MB
 
 class Solution:
     def checkIfCanBreak(self, s1: str, s2: str) -> bool:

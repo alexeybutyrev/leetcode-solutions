@@ -1,6 +1,6 @@
 # Problem: Construct Binary Search Tree from Preorder Traversal
 # Language: python3
-# Runtime: 24 ms
+# Runtime: 36 ms
 # Memory: 13.8 MB
 
 # Definition for a binary tree node.
@@ -13,46 +13,27 @@
 class Solution:
     def bstFromPreorder(self, preorder: List[int]) -> TreeNode:
         
-        def walk(node, a):
-            #print(a)
-            v = node.val
+        def helper(ind_left = 0, ind_right = len(preorder)):
             
-            if not a:
-                node.left  = None
-                node.right = None
-                
-            ind_left = 0
-            for i in range(len(a)):
-                if a[i] < v:
-                    ind_left = i
-                    break
+            nonlocal pre_idx
+            if ind_left == ind_right:
+                return None
             
-            ind_right = 0
-            for i in range(len(a)):
-                if a[i] > v:
-                    ind_right = i
-                    break
-                    
-            if 0 == ind_left:
-                node.left = None
-            else:
-                node.left = TreeNode(a[ind_left])
-                if 0 == ind_right:
-                    walk(node.left, a[ind_left:])
-                else:
-                    walk(node.left, a[ind_left:ind_right])
+            val = preorder[pre_idx]
+            index = ind_hm[val]
             
-            if 0 == ind_right:
-                node.right = None
-            else:
-                node.right = TreeNode(a[ind_right])
-                walk(node.right, a[ind_right:])
+            pre_idx+=1
+            root = TreeNode(val)
             
-        if not preorder:
-            return preorder
+            root.left  = helper(ind_left, index)
+            root.right = helper(index+1, ind_right)
+            
+            return root
         
-        root = TreeNode(preorder[0])
-        node = root
-        walk(node,preorder)
-        return root
-                
+        pre_idx = 0
+        indorder = sorted(preorder)
+        ind_hm = {val:ind for ind,val in enumerate(indorder)}
+        
+        
+        
+        return helper()

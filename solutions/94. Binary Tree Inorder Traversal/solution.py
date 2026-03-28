@@ -1,36 +1,32 @@
 # Problem: Binary Tree Inorder Traversal
-# Language: python
-# Runtime: 20 ms
-# Memory: 11.8 MB
+# Language: python3
+# Runtime: 32 ms
+# Memory: 13.9 MB
 
 # Definition for a binary tree node.
-# class TreeNode(object):
-#     def __init__(self, x):
-#         self.val = x
-#         self.left = None
-#         self.right = None
-
-class Solution(object):
-    def _collect(self, node, r = []):
-        if node:
-            self._collect(node.left,r)
-            r.append(node.val)
-            self._collect(node.right,r)
-        return r
-    
-    def inorderTraversal(self, root):
-        """
-        :type root: TreeNode
-        :rtype: List[int]
-        """
-        stack, output = [], []
-        while (root or stack):
-            while root:
-                stack.append(root)
-                root = root.left
-            root = stack.pop()
-            output.append(root.val)
-            root = root.right
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def inorderTraversal(self, root: TreeNode) -> List[int]:
         
-        return output
-    
+        if not root:
+            return root
+        
+        
+        node = root
+        stack = []
+        res = []
+        while stack or node:
+            
+            while node:
+                stack.append(node)
+                node = node.left
+            node = stack.pop()
+            res.append(node.val)
+            node = node.right
+        
+        return res
+            

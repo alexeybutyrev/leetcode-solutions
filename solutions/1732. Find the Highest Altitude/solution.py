@@ -1,8 +1,14 @@
 # Problem: Find the Highest Altitude
 # Language: python3
-# Runtime: 44 ms
-# Memory: 16.4 MB
+# Runtime: 60 ms
+# Memory: 14.3 MB
 
 class Solution:
     def largestAltitude(self, gain: List[int]) -> int:
-        return max(accumulate(gain, initial = 0))
+        
+        res = [0]
+        
+        for g in gain:
+            res.append(res[-1] + g)
+        
+        return max(res)

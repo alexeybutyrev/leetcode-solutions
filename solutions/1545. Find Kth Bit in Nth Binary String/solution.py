@@ -1,7 +1,7 @@
 # Problem: Find Kth Bit in Nth Binary String
 # Language: python3
-# Runtime: 331 ms
-# Memory: 30.8 MB
+# Runtime: 724 ms
+# Memory: 25.7 MB
 
 class Solution:
     def findKthBit(self, n: int, k: int) -> str:

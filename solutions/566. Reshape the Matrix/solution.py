@@ -1,7 +1,7 @@
 # Problem: Reshape the Matrix
 # Language: python3
-# Runtime: 80 ms
-# Memory: 15.2 MB
+# Runtime: 84 ms
+# Memory: 15.1 MB
 
 class Solution:
     def matrixReshape(self, A: List[List[int]], r: int, c: int) -> List[List[int]]:

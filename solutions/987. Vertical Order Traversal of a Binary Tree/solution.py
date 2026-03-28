@@ -1,7 +1,7 @@
 # Problem: Vertical Order Traversal of a Binary Tree
 # Language: python3
-# Runtime: 28 ms
-# Memory: 14 MB
+# Runtime: 32 ms
+# Memory: 14.5 MB
 
 # Definition for a binary tree node.
 # class TreeNode:
@@ -10,31 +10,21 @@
 #         self.left = left
 #         self.right = right
 from collections import defaultdict
-from heapq import *
 class Solution:
     def verticalTraversal(self, root: TreeNode) -> List[List[int]]:
-        q = []
-        heappush(q,(root.val, 0,root))
-        res = defaultdict(list)
-        while q:
-            l = len(q)
-            new_heap = []
-            for _ in range(l):
-                value, v, node = heappop(q)           
-                res[v].append(value)
-                
-                if node.left:
-                    heappush(new_heap,(node.left.val, v-1,node.left))
-                if node.right:
-                    heappush(new_heap,(node.right.val, v+1,node.right))
-            q = new_heap
-
         
-        result = []
-        for key in sorted(res.keys()):
-            result.append(res[key])
+        hm = defaultdict(list)
+        def walk(node, x, y):
+            if node:
+                hm[x].append( (-y,node.val))
+                walk(node.left, x - 1, y - 1)
+                walk(node.right, x + 1, y - 1)
         
+        walk(root,0,0)
+        res = []
         
-        return result
-                    
-                
+        for k in sorted(hm.keys()):
+            l = map( lambda x: x[1], list(sorted(hm[k]) )) 
+            res.append( l)
+        
+        return res

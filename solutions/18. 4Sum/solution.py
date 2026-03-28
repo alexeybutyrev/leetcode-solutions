@@ -1,28 +1,26 @@
 # Problem: 4Sum
 # Language: python3
-# Runtime: 144 ms
-# Memory: 18.5 MB
+# Runtime: 3792 ms
+# Memory: 474 MB
 
 class Solution:
     def fourSum(self, A: List[int], target: int) -> List[List[int]]:
-        S = defaultdict(list)
         N = len(A)
+        
+        hm = defaultdict(set)
+        for i in range(N):
+            for j in range(i+1,N):
+                for k in range(j+1,N):
+                    hm[A[i] + A[j] + A[k]].add((i,j,k))
+        
         ans = set()
-        for i in range(N):
-            for j in range(i+1, N):
-                S[A[i] + A[j]].append((i,j))
-        
-        for i in range(N):
-            for j in range(i+1, N):
-                c = target - A[i] - A[j]
-                if c in S:
-                    for k,l in S[c]:
-                        if k!= i and l!= j and k!=j and l!=i:
-                            ans.add(tuple(sorted([A[i],A[j],A[k],A[l]])))
-
-        
-        
-        
+        for i,a in enumerate(A):
+            if target - a in hm:
+                for s in hm[target - a]:
+                    if i not in s:
+                        v = [A[i]]
+                        for j in s:
+                            v.append(A[j])
+                        ans.add(tuple(sorted(v)))
         return ans
-        
         

@@ -1,17 +1,35 @@
 # Problem: Check If All 1's Are at Least Length K Places Away
 # Language: python3
-# Runtime: 8 ms
-# Memory: 20.8 MB
+# Runtime: 1196 ms
+# Memory: 16.5 MB
 
 class Solution:
     def kLengthApart(self, nums: List[int], k: int) -> bool:
-        if 0 == k: return True
-        while nums and nums[-1] == 0:
-            nums.pop()
-        while nums and nums[0] == 0:
-            nums.pop(0)
-        if not nums: return True
-        for key,v in groupby(nums):
-            if key == 1 and len(list(v)) > 1: return False
-            if key == 0 and len(list(v)) < k: return False
+
+        n  = len(nums)
+        
+        
+        ind = 0
+        if nums[ind] != 1:
+            for i in range(n):
+                if nums[i] == 1:
+                    ind = i
+                    break
+        
+            if ind == 0:
+                return True
+        
+        count = 0
+        for i in range(ind+1, n):
+            if nums[i] == 1:
+                if count < k and ind != n-1:
+                    return False
+                else:
+                    count = 0
+            else:
+                 count += 1
+        
         return True
+    
+            
+            

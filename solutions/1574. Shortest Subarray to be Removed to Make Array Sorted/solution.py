@@ -1,7 +1,7 @@
 # Problem: Shortest Subarray to be Removed to Make Array Sorted
 # Language: python3
-# Runtime: 10 ms
-# Memory: 30.4 MB
+# Runtime: 628 ms
+# Memory: 28.7 MB
 
 class Solution:
     def findLengthOfShortestSubarray(self, A: List[int]) -> int:

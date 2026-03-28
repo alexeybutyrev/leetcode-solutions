@@ -1,17 +1,22 @@
 # Problem: Find Words That Can Be Formed by Characters
-# Language: python3
-# Runtime: 153 ms
-# Memory: 16.9 MB
+# Language: python
+# Runtime: 428 ms
+# Memory: 13.7 MB
 
-class Solution:
-    def countCharacters(self, words: List[str], chars: str) -> int:
+from collections import Counter
+class Solution(object):
+    def countCharacters(self, words, chars):
+        """
+        :type words: List[str]
+        :type chars: str
+        :rtype: int
+        """
         c = Counter(chars)
-        ans = 0
+        
+        sm_ = 0
         for w in words:
-            cw = Counter(w)
-            for k,v in cw.items():
-                if c[k] < v:
-                    break
-            else:
-                ans += len(w)
-        return ans
+            wc = Counter(w)
+            if all(k in c and c[k] >= wc[k] for k,v in wc.items()):
+                sm_ += len(w)
+        return sm_
+                

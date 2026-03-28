@@ -1,15 +1,9 @@
 # Problem: Number of Equivalent Domino Pairs
 # Language: python3
-# Runtime: 10 ms
-# Memory: 24.2 MB
+# Runtime: 265 ms
+# Memory: 23.6 MB
 
+from math import comb
 class Solution:
-    def numEquivDominoPairs(self, dominoes: List[List[int]]) -> int:
-        c = Counter()
-        for a,b in dominoes:
-            if a > b:
-                c[(b,a)] +=1
-            else:
-                c[(a,b)] +=1
-        
-        return sum(v * (v - 1) // 2 for _,v in c.items())
+    def numEquivDominoPairs(self, dominoes: List[List[int]]) -> int:        
+        return sum(v * (v - 1)//2 for v in Counter([(a,b) if a < b else (b,a) for a,b in dominoes]).values())

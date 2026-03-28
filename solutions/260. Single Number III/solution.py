@@ -1,22 +1,19 @@
 # Problem: Single Number III
 # Language: python3
-# Runtime: 56 ms
-# Memory: 15.7 MB
+# Runtime: 1868 ms
+# Memory: 15.6 MB
 
 class Solution:
     def singleNumber(self, nums: List[int]) -> List[int]:
-        mask = 0
+        n = len(nums)
+        s = 0
+        for e in nums:
+            s ^= e
         
-        for n in nums:
-            mask^=n
+        for e in nums:
+            if s^e in nums:
+                break
         
-
-        m = mask & (-mask)
-        x = 0
-        for n in nums:
-            if n & m:
-                x ^= n
+        return [e,s^e]
         
-        return [x,x^mask]
-
         

@@ -1,31 +1,28 @@
 # Problem: 01 Matrix
 # Language: python3
-# Runtime: 553 ms
-# Memory: 19.7 MB
+# Runtime: 676 ms
+# Memory: 17.4 MB
 
 class Solution:
-    def updateMatrix(self, A: List[List[int]]) -> List[List[int]]:
-        N,M = len(A), len(A[0])
-        seen = set()
+    def updateMatrix(self, mat: List[List[int]]) -> List[List[int]]:
+        N, M = len(mat), len(mat[0])
+        dp = [[inf] * M for _ in range(N)]
         q = deque()
         for i in range(N):
             for j in range(M):
-                if A[i][j]== 0:
+                if mat[i][j] == 0:
+                    dp[i][j] = 0
                     q.append((i,j))
-                    seen.add((i,j))
-        l = 0
+        
+        directions = [(1,0),(-1,0),(0,1),(0,-1)]
+        
         while q:
-            L = len(q)
-            for _ in range(L):
-                i,j = q.popleft()
-                A[i][j] = l
-                for dx,dy in [(-1,0),(1,0),(0,-1),(0,1)]:
-                    
-                    x = i + dx
-                    y = j + dy
-                    if 0<=x<N and 0<=y<M and (x,y) not in seen:
-                        seen.add((x,y))
-                        q.append((x,y))
-            l+=1
-        return A
-    
+            i,j = q.popleft()
+            for dx,dy in directions:
+                x = i + dx
+                y = j + dy
+                if x>=0 and x < N and y >= 0 and y < M and dp[x][y] == inf:
+                    dp[x][y] = 1 + dp[i][j]
+                    q.append((x,y))
+
+        return dp

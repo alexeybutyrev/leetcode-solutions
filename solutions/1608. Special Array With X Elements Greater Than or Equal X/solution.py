@@ -1,18 +1,13 @@
 # Problem: Special Array With X Elements Greater Than or Equal X
 # Language: python3
-# Runtime: 39 ms
-# Memory: 16.5 MB
+# Runtime: 60 ms
+# Memory: 14.1 MB
 
 class Solution:
     def specialArray(self, nums: List[int]) -> int:
-        for i in range(1,len(nums)+1):
-            c = 0
-            for x in nums:
-                if x >= i:
-                    c+=1
-                if c > i:
-                    break
-            else:
-                if c == i:
-                    return i
+        
+        for i in range(1,101):
+            n = len(list((filter(lambda x: x >= i, nums))))
+            if n == i:
+                return n
         return -1

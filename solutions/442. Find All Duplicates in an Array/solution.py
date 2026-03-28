@@ -1,8 +1,15 @@
 # Problem: Find All Duplicates in an Array
 # Language: python3
-# Runtime: 332 ms
-# Memory: 23.2 MB
+# Runtime: 376 ms
+# Memory: 21.7 MB
 
 class Solution:
     def findDuplicates(self, nums: List[int]) -> List[int]:
-        return [k for k,v in Counter(nums).items() if v == 2]
+        ans = []
+        for n in nums:
+            if nums[abs(n) - 1] < 0:
+                ans.append(abs(n))
+            else:
+                nums[abs(n) - 1] *= -1
+        
+        return ans

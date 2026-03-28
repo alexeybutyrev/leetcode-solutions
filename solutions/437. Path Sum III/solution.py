@@ -1,7 +1,7 @@
 # Problem: Path Sum III
 # Language: python3
-# Runtime: 704 ms
-# Memory: 15.1 MB
+# Runtime: 736 ms
+# Memory: 15.3 MB
 
 # Definition for a binary tree node.
 # class TreeNode:
@@ -10,30 +10,29 @@
 #         self.left = left
 #         self.right = right
 class Solution:
-    def pathSum(self, root: Optional[TreeNode], targetSum: int) -> int:
+    def pathSum(self, root: TreeNode, sum: int) -> int:
         if not root:
             return 0
-        
-        q = deque([(root.val, root)])
-        ans = 0
-        seen = {root}
-        while q:
-            s, node = q.popleft()
-            
-            if s == targetSum:
-                ans += 1
-            
+        visited = set()
+        def walk(node,s):
+            nonlocal count
+            s = s + node.val
+            if s == sum:
+                #print(node)
+                #print("here")
+                count +=1
+                
             if node.left:
-                if node.left not in seen:
-                    seen.add(node.left)
-                    q.append((node.left.val, node.left))
-                q.append((s + node.left.val, node.left))
-            
+                walk(node.left,s)
+                if node.left not in visited:
+                    visited.add(node.left)
+                    walk(node.left,0)
             if node.right:
-                if node.right not in seen:
-                    seen.add(node.right)
-                    q.append((node.right.val, node.right))
-                q.append((s + node.right.val, node.right))
+                walk(node.right,s)
+                if node.right not in visited:
+                    visited.add(node.right)
+                    walk(node.right,0)
         
-        return ans
-            
+        count = 0
+        walk(root,0)
+        return count

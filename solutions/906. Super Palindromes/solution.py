@@ -1,12 +1,11 @@
 # Problem: Super Palindromes
 # Language: python3
-# Runtime: 568 ms
-# Memory: 14.1 MB
+# Runtime: 772 ms
+# Memory: 14.3 MB
 
 from math import sqrt
 class Solution:
     def superpalindromesInRange(self, left: str, right: str) -> int:
-        
         is_pali = lambda x: x == x[::-1]
         
         

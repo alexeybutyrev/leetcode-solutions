@@ -1,0 +1,3 @@
+**Topics:** `string` `greedy`
+**Difficulty:** `Easy`
+**LeetCode:** https://leetcode.com/problems/minimum-time-to-type-word-using-special-typewriter/

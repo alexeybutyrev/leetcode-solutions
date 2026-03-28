@@ -1,7 +1,7 @@
 # Problem: Flatten Nested List Iterator
 # Language: python3
-# Runtime: 42 ms
-# Memory: 20 MB
+# Runtime: 76 ms
+# Memory: 17.7 MB
 
 # """
 # This is the interface that allows for creating nested lists.
@@ -27,28 +27,30 @@
 
 class NestedIterator:
     def __init__(self, nestedList: [NestedInteger]):
-        def gen(nestedList):
-            for x in nestedList:
-                if x.isInteger():
-                    yield x.getInteger()
-                else:
-                    for y in gen(x.getList()):
-                        yield y
+        self.q = self.__getlist(nestedList)
+        self.N = len(self.q)
+        self.ind = 0
         
-        self.gen = gen(nestedList)
+    def __getlist(self,l):
+        
+        q = []
+        for i in range(len(l)):
+            if l[i].isInteger():
+                q += [l[i]]
+            else:
+                q.extend(self.__getlist(l[i].getList()))
+        
+        return q
     
     def next(self) -> int:
-        return self.value
+        c = self.q[self.ind]
+        self.ind += 1
+        return c
             
     
     def hasNext(self) -> bool:
-        try:
-            self.value = next(self.gen)
-            return True
-        except StopIteration:
-            return False
-        
-    
+        return self.ind < self.N
+
 # Your NestedIterator object will be instantiated and called as such:
 # i, v = NestedIterator(nestedList), []
 # while i.hasNext(): v.append(i.next())

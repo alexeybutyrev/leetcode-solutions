@@ -1,7 +1,7 @@
 # Problem: Reorder List
 # Language: python3
-# Runtime: 82 ms
-# Memory: 26 MB
+# Runtime: 96 ms
+# Memory: 23.3 MB
 
 # Definition for singly-linked list.
 # class ListNode:
@@ -9,29 +9,38 @@
 #         self.val = val
 #         self.next = next
 class Solution:
-    def reorderList(self, head: Optional[ListNode]) -> None:
+    def reorderList(self, head: ListNode) -> None:
         """
         Do not return anything, modify head in-place instead.
         """
-        p = ans = head
+        # find half
+        slow = head
+        fast = head
         
-        q = deque()        
-        while head:    
-            q.append(head)
-            head = head.next
-        
-        p = ans = ListNode(-1)
-        while q:
-            p.next = q.popleft()
-            p = p.next
-            if q:
-                p.next = q.pop()
-                p = p.next
+        while fast and fast.next:
+            fast = fast.next.next
+            slow = slow.next
                 
+        # reverse
+        prev = None
         
-        if p.next:
-            p.next = None
-        return ans
+        curr = slow
         
-    
-    
+        while curr:
+            next = curr.next
+            prev,curr = curr,prev
+            prev.next = curr
+            curr = next
+        
+        
+        # merge
+        curr = head
+        r = head
+        while curr and prev and curr.next and prev.next:
+            c = curr.next
+            p = prev.next
+            curr.next = prev
+            prev.next = c
+            prev = p
+            curr = c
+        return r

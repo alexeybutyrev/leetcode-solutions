@@ -5,17 +5,13 @@
 
 class Solution:
     def numberOfSteps (self, num: int) -> int:
-        if num == 0: return 0
+        count = 0
         
-        count = 0 
-        p2 = 1
-        
-        while p2 <= num:
-            if p2 & num !=0:
-                count += 2
+        while num:
+            if num %2 == 0:
+                num /= 2
             else:
-                count += 1
-            
-            p2 *= 2
+                num -= 1
+            count += 1
         
-        return count - 1
+        return count

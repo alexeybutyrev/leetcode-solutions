@@ -1,14 +1,14 @@
 # Problem: Maximum Size Subarray Sum Equals k
 # Language: python3
-# Runtime: 108 ms
-# Memory: 17.5 MB
+# Runtime: 368 ms
+# Memory: 50.7 MB
 
 class Solution:
-    def maxSubArrayLen(self, nums: List[int], k: int) -> int:
+    def maxSubArrayLen(self, A: List[int], k: int) -> int:
         d = {0:-1}
         mx = 0
         s = 0
-        for ind,n in enumerate(nums):
+        for ind,n in enumerate(A):
             s+=n
             if s-k in d:
                 mx = max(mx, ind - d[s-k])

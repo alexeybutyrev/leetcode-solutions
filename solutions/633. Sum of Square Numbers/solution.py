@@ -1,7 +1,7 @@
 # Problem: Sum of Square Numbers
 # Language: python3
-# Runtime: 149 ms
-# Memory: 16.3 MB
+# Runtime: 208 ms
+# Memory: 14.3 MB
 
 class Solution:
     def judgeSquareSum(self, c: int) -> bool:

@@ -1,32 +1,45 @@
 # Problem: Unique Length-3 Palindromic Subsequences
 # Language: python3
-# Runtime: 467 ms
-# Memory: 49 MB
+# Runtime: 3260 ms
+# Memory: 15 MB
 
-from string import ascii_lowercase
 class Solution:
+    
+    def __init__(self):
+        self.s = set()
+        for i in range(0,26):
+            l = chr(i + ord('a'))
+            for j in range(0,26):
+                l2 = chr(j + ord('a'))
+                self.s.add(l + l2 + l)
+        
     def countPalindromicSubsequence(self, s: str) -> int:
-        c = Counter()
-        A = []
-        first = {}
-        last  = {}
-        curr = [0] * 26
-        ch = lambda x: ord(x) - ord('a')
+        
+        for j in range(0,26):
+            l2 = chr(j + ord('a'))
+        
+        P = {}
+        S = {}
         for i,l in enumerate(s):
-            if l not in first:
-                first[l] = i
-            last[l] = i
-            curr[ch(l)] += 1
-            A.append(curr[:])
+            if l not in P:
+                P[l] = i
+            S[l] = i
+        
+        letters = {}
+        for l in P:
+            if P[l] != S[l]:
+                letters[l] = (P[l],S[l])
         
         
-        ans = 0
-        seen = set()
-        for c in ascii_lowercase:
-            l = s.find(c)
-            r = s.rfind(c)
-            if l != r:
-                d = [y - x for x,y in zip(A[l], A[r])]
-                d[ch(c)] -= 1
-                ans += sum( x>0 for x in d) 
-        return ans
+        if not letters:
+            return 0
+        
+        ans = set()
+        for l,(start,end) in letters.items():
+            for i in range(start+1, end):
+                ans.add(l + s[i] + l)
+        return len(ans)
+            
+                
+        
+        

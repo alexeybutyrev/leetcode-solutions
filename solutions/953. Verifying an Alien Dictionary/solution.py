@@ -1,7 +1,7 @@
 # Problem: Verifying an Alien Dictionary
 # Language: python3
-# Runtime: 39 ms
-# Memory: 13.9 MB
+# Runtime: 44 ms
+# Memory: 14.2 MB
 
 class Solution:
     def isAlienSorted(self, words: List[str], order: str) -> bool:
