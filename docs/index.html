@@ -14,10 +14,12 @@
       background: #0d1117;
       color: #c9d1d9;
     }
-    h1 { color: #58a6ff; }
+    h1 { color: #58a6ff; margin-bottom: 5px; }
+    .subtitle { color: #8b949e; margin-bottom: 20px; }
+    
     .stats { 
       display: flex; 
-      gap: 20px; 
+      gap: 15px; 
       margin-bottom: 20px;
       flex-wrap: wrap;
     }
@@ -25,87 +27,186 @@
       background: #161b22;
       border: 1px solid #30363d;
       border-radius: 8px;
-      padding: 15px 25px;
+      padding: 12px 20px;
       text-align: center;
+      min-width: 100px;
     }
-    .stat-card .number { font-size: 2em; font-weight: bold; color: #58a6ff; }
-    .stat-card .label { color: #8b949e; font-size: 0.9em; }
+    .stat-card .number { font-size: 1.8em; font-weight: bold; color: #58a6ff; }
+    .stat-card .label { color: #8b949e; font-size: 0.85em; }
+    
     .filters {
       display: flex;
-      gap: 15px;
-      margin-bottom: 20px;
+      gap: 12px;
+      margin-bottom: 15px;
       flex-wrap: wrap;
       align-items: center;
     }
-    .filters label { font-weight: 500; }
-    select, input {
+    .filter-group {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .filter-group label { font-weight: 500; font-size: 14px; }
+    select, input[type="text"] {
       background: #161b22;
       border: 1px solid #30363d;
       color: #c9d1d9;
-      padding: 8px 12px;
+      padding: 6px 10px;
       border-radius: 6px;
-      font-size: 14px;
+      font-size: 13px;
+      min-width: 120px;
     }
-    input { width: 250px; }
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      background: #161b22;
-      border-radius: 8px;
-      overflow: hidden;
-    }
-    th, td {
-      padding: 12px 15px;
-      text-align: left;
-      border-bottom: 1px solid #30363d;
-    }
-    th { background: #21262d; font-weight: 600; }
-    tr:hover { background: #1f2428; }
-    a { color: #58a6ff; text-decoration: none; }
-    a:hover { text-decoration: underline; }
-    .difficulty-easy { color: #3fb950; }
-    .difficulty-medium { color: #d29922; }
-    .difficulty-hard { color: #f85149; }
-    .topic-tag {
-      display: inline-block;
-      background: #21262d;
-      border: 1px solid #30363d;
-      border-radius: 12px;
-      padding: 2px 8px;
-      margin: 2px;
-      font-size: 12px;
-    }
-    .footer {
-      margin-top: 40px;
-      text-align: center;
-      color: #8b949e;
-    }
-    .footer a { color: #58a6ff; }
-    #pagination {
+    input[type="text"] { min-width: 180px; }
+    select:focus, input:focus { outline: none; border-color: #58a6ff; }
+    
+    .actions {
       display: flex;
-      justify-content: center;
       gap: 10px;
-      margin-top: 20px;
+      align-items: center;
+      margin-bottom: 15px;
     }
-    #pagination button {
+    button {
       background: #21262d;
       border: 1px solid #30363d;
       color: #c9d1d9;
       padding: 8px 16px;
       border-radius: 6px;
       cursor: pointer;
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
     }
-    #pagination button:hover { background: #30363d; }
-    #pagination button.active { background: #58a6ff; color: #0d1117; }
+    button:hover { background: #30363d; }
+    button.primary { background: #238636; border-color: #238636; }
+    button.primary:hover { background: #2ea043; }
+    
+    .showing { color: #8b949e; margin-left: auto; }
+    
+    .table-container {
+      background: #161b22;
+      border: 1px solid #30363d;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    thead {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    th {
+      background: #21262d;
+      padding: 12px 15px;
+      text-align: left;
+      font-weight: 600;
+      border-bottom: 1px solid #30363d;
+      cursor: pointer;
+      user-select: none;
+    }
+    th:hover { background: #30363d; }
+    th.sortable::after { content: ' ⇅'; opacity: 0.5; }
+    th.sort-asc::after { content: ' ↑'; opacity: 1; }
+    th.sort-desc::after { content: ' ↓'; opacity: 1; }
+    
+    td {
+      padding: 10px 15px;
+      border-bottom: 1px solid #21262d;
+    }
+    tr:hover { background: #1f2428; }
+    
+    a { color: #58a6ff; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    
+    .difficulty-easy { color: #3fb950; font-weight: 500; }
+    .difficulty-medium { color: #d29922; font-weight: 500; }
+    .difficulty-hard { color: #f85149; font-weight: 500; }
+    
+    .topic-tag {
+      display: inline-block;
+      background: #21262d;
+      border: 1px solid #30363d;
+      border-radius: 12px;
+      padding: 2px 8px;
+      margin: 1px;
+      font-size: 11px;
+      white-space: nowrap;
+    }
+    
+    .lang-tag {
+      display: inline-block;
+      background: #1f3a5f;
+      border-radius: 4px;
+      padding: 2px 6px;
+      font-size: 11px;
+      color: #79c0ff;
+    }
+    
+    .links { display: flex; gap: 8px; }
+    .links a {
+      font-size: 16px;
+      opacity: 0.7;
+    }
+    .links a:hover { opacity: 1; }
+    
+    #pagination {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 20px;
+      flex-wrap: wrap;
+    }
+    #pagination button {
+      min-width: 40px;
+      padding: 6px 12px;
+    }
+    #pagination button.active { 
+      background: #58a6ff; 
+      color: #0d1117; 
+      border-color: #58a6ff;
+    }
+    
+    .footer {
+      margin-top: 40px;
+      text-align: center;
+      color: #8b949e;
+      padding-top: 20px;
+      border-top: 1px solid #30363d;
+    }
+    .footer a { color: #58a6ff; }
+    .footer .links { justify-content: center; margin-bottom: 10px; }
+    
+    /* Virtual scroll container */
+    .scroll-container {
+      height: calc(100vh - 400px);
+      min-height: 400px;
+      max-height: 600px;
+      overflow-y: auto;
+    }
+    .scroll-container::-webkit-scrollbar { width: 8px; }
+    .scroll-container::-webkit-scrollbar-track { background: #161b22; }
+    .scroll-container::-webkit-scrollbar-thumb { background: #30363d; border-radius: 4px; }
+    
+    @media (max-width: 768px) {
+      .filters { flex-direction: column; align-items: stretch; }
+      .filter-group { width: 100%; }
+      select, input[type="text"] { width: 100%; }
+      th, td { padding: 8px 10px; font-size: 13px; }
+    }
   </style>
 </head>
 <body>
   <h1>🎯 LeetCode Solutions</h1>
+  <p class="subtitle">My solutions to 2,529 problems on LeetCode</p>
   
   <div class="stats">
     <div class="stat-card">
       <div class="number" id="total-problems">0</div>
-      <div class="label">Problems</div>
+      <div class="label">Showing</div>
     </div>
     <div class="stat-card">
       <div class="number" id="easy-count">0</div>
@@ -122,46 +223,67 @@
   </div>
   
   <div class="filters">
-    <label>Search:</label>
-    <input type="text" id="search" placeholder="Filter by problem name...">
+    <div class="filter-group">
+      <label>🔍</label>
+      <input type="text" id="search" placeholder="Search problems...">
+    </div>
     
-    <label>Difficulty:</label>
-    <select id="difficulty-filter">
-      <option value="">All</option>
-      <option value="Easy">Easy</option>
-      <option value="Medium">Medium</option>
-      <option value="Hard">Hard</option>
-    </select>
+    <div class="filter-group">
+      <label>Difficulty:</label>
+      <select id="difficulty-filter">
+        <option value="">All</option>
+        <option value="Easy">Easy</option>
+        <option value="Medium">Medium</option>
+        <option value="Hard">Hard</option>
+      </select>
+    </div>
     
-    <label>Topic:</label>
-    <select id="topic-filter">
-      <option value="">All Topics</option>
-    </select>
+    <div class="filter-group">
+      <label>Topic:</label>
+      <select id="topic-filter">
+        <option value="">All Topics</option>
+      </select>
+    </div>
     
-    <span id="showing">Showing 0 problems</span>
+    <div class="filter-group">
+      <label>Language:</label>
+      <select id="language-filter">
+        <option value="">All</option>
+      </select>
+    </div>
   </div>
   
-  <table>
-    <thead>
-      <tr>
-        <th>#</th>
-        <th>Problem</th>
-        <th>Difficulty</th>
-        <th>Topics</th>
-        <th>Link</th>
-      </tr>
-    </thead>
-    <tbody id="problems-table"></tbody>
-  </table>
+  <div class="actions">
+    <button class="primary" id="random-btn">🎲 Random Problem</button>
+    <div class="showing" id="showing">Showing 0 of 0</div>
+  </div>
+  
+  <div class="table-container">
+    <div class="scroll-container" id="scroll-container">
+      <table>
+        <thead>
+          <tr>
+            <th class="sortable" data-sort="id">#</th>
+            <th class="sortable" data-sort="title">Problem</th>
+            <th class="sortable" data-sort="difficulty">Difficulty</th>
+            <th>Topics</th>
+            <th>Lang</th>
+            <th>Links</th>
+          </tr>
+        </thead>
+        <tbody id="problems-table"></tbody>
+      </table>
+    </div>
+  </div>
   
   <div id="pagination"></div>
   
   <div class="footer">
-    <p>
-      <a href="https://alexeybutyrev.github.io/">🌐 Website</a> • 
-      <a href="https://leetcode.com/u/alexey_wish/">🎯 LeetCode</a> • 
+    <div class="links">
+      <a href="https://alexeybutyrev.github.io/">🌐 Website</a>
+      <a href="https://leetcode.com/u/alexey_wish/">🎯 LeetCode</a>
       <a href="https://github.com/alexeybutyrev/leetcode-solutions">💻 GitHub</a>
-    </p>
+    </div>
     <p>Made with ❤️ by Alexey Butyrev</p>
   </div>
 
@@ -169,13 +291,20 @@
     let problems = [];
     let filtered = [];
     let page = 1;
-    const perPage = 100;
+    const perPage = 50;
+    let sortField = 'id';
+    let sortDir = 'asc';
+    
+    // Virtual scrolling
+    let visibleStart = 0;
+    let visibleEnd = perPage;
+    const rowHeight = 45;
     
     fetch('problems.json')
       .then(r => r.json())
       .then(data => {
         problems = data;
-        filtered = data;
+        filtered = [...data];
         
         // Get all unique topics
         const topics = new Set();
@@ -188,48 +317,99 @@
           topicSelect.appendChild(opt);
         });
         
-        // Update stats
-        document.getElementById('total-problems').textContent = problems.length;
-        document.getElementById('easy-count').textContent = problems.filter(p => p.difficulty === 'Easy').length;
-        document.getElementById('medium-count').textContent = problems.filter(p => p.difficulty === 'Medium').length;
-        document.getElementById('hard-count').textContent = problems.filter(p => p.difficulty === 'Hard').length;
+        // Get all unique languages
+        const langs = new Set(problems.map(p => p.language).filter(Boolean));
+        const langSelect = document.getElementById('language-filter');
+        [...langs].sort().forEach(l => {
+          const opt = document.createElement('option');
+          opt.value = l;
+          opt.textContent = l;
+          langSelect.appendChild(opt);
+        });
         
+        // Update total stats
+        updateStats();
+        sortProblems();
         render();
       });
+    
+    function updateStats() {
+      document.getElementById('easy-count').textContent = filtered.filter(p => p.difficulty === 'Easy').length;
+      document.getElementById('medium-count').textContent = filtered.filter(p => p.difficulty === 'Medium').length;
+      document.getElementById('hard-count').textContent = filtered.filter(p => p.difficulty === 'Hard').length;
+    }
     
     function filter() {
       const search = document.getElementById('search').value.toLowerCase();
       const difficulty = document.getElementById('difficulty-filter').value;
       const topic = document.getElementById('topic-filter').value;
+      const language = document.getElementById('language-filter').value;
       
       filtered = problems.filter(p => {
-        if (search && !p.title.toLowerCase().includes(search)) return false;
+        if (search && !p.title.toLowerCase().includes(search) && !String(p.id).includes(search)) return false;
         if (difficulty && p.difficulty !== difficulty) return false;
         if (topic && !p.topics.includes(topic)) return false;
+        if (language && p.language !== language) return false;
         return true;
       });
       
       page = 1;
+      sortProblems();
+      updateStats();
       render();
+    }
+    
+    function sortProblems() {
+      const diffOrder = { 'Easy': 1, 'Medium': 2, 'Hard': 3 };
+      
+      filtered.sort((a, b) => {
+        let cmp = 0;
+        if (sortField === 'id') {
+          cmp = a.id - b.id;
+        } else if (sortField === 'title') {
+          cmp = a.title.localeCompare(b.title);
+        } else if (sortField === 'difficulty') {
+          cmp = (diffOrder[a.difficulty] || 99) - (diffOrder[b.difficulty] || 99);
+        }
+        return sortDir === 'asc' ? cmp : -cmp;
+      });
     }
     
     function render() {
       const tbody = document.getElementById('problems-table');
       const start = (page - 1) * perPage;
-      const end = start + perPage;
+      const end = Math.min(start + perPage, filtered.length);
       const pageData = filtered.slice(start, end);
       
-      tbody.innerHTML = pageData.map(p => `
-        <tr>
-          <td>${p.id}</td>
-          <td><a href="https://github.com/alexeybutyrev/leetcode-solutions/tree/master/solutions/${p.id}. ${encodeURIComponent(p.title)}">${p.title}</a></td>
-          <td class="difficulty-${p.difficulty.toLowerCase()}">${p.difficulty}</td>
-          <td>${p.topics.map(t => `<span class="topic-tag">${t}</span>`).join('')}</td>
-          <td><a href="https://leetcode.com/problems/${p.slug}/" target="_blank">🔗</a></td>
-        </tr>
-      `).join('');
+      tbody.innerHTML = pageData.map(p => {
+        const ghUrl = `https://github.com/alexeybutyrev/leetcode-solutions/tree/master/solutions/${p.id}.%20${encodeURIComponent(p.title)}`;
+        const lcUrl = `https://leetcode.com/problems/${p.slug}/`;
+        
+        return `
+          <tr>
+            <td>${p.id}</td>
+            <td><a href="${ghUrl}" target="_blank">${escapeHtml(p.title)}</a></td>
+            <td class="difficulty-${p.difficulty?.toLowerCase() || ''}">${p.difficulty || 'Unknown'}</td>
+            <td>${p.topics.slice(0, 3).map(t => `<span class="topic-tag">${escapeHtml(t)}</span>`).join('')}${p.topics.length > 3 ? `<span class="topic-tag">+${p.topics.length - 3}</span>` : ''}</td>
+            <td><span class="lang-tag">${p.language || '?'}</span></td>
+            <td class="links">
+              <a href="${ghUrl}" target="_blank" title="View solution on GitHub">📝</a>
+              <a href="${lcUrl}" target="_blank" title="View on LeetCode">🔗</a>
+            </td>
+          </tr>
+        `;
+      }).join('');
       
-      document.getElementById('showing').textContent = `Showing ${filtered.length} problems`;
+      document.getElementById('total-problems').textContent = filtered.length;
+      document.getElementById('showing').textContent = `Showing ${start + 1}-${end} of ${filtered.length}`;
+      
+      // Update sort indicators
+      document.querySelectorAll('th.sortable').forEach(th => {
+        th.classList.remove('sort-asc', 'sort-desc');
+        if (th.dataset.sort === sortField) {
+          th.classList.add(sortDir === 'asc' ? 'sort-asc' : 'sort-desc');
+        }
+      });
       
       // Pagination
       const totalPages = Math.ceil(filtered.length / perPage);
@@ -237,24 +417,100 @@
       pagination.innerHTML = '';
       
       if (totalPages > 1) {
-        for (let i = 1; i <= Math.min(totalPages, 10); i++) {
+        // First/Prev
+        if (page > 1) {
+          const firstBtn = document.createElement('button');
+          firstBtn.textContent = '«';
+          firstBtn.onclick = () => { page = 1; render(); };
+          pagination.appendChild(firstBtn);
+          
+          const prevBtn = document.createElement('button');
+          prevBtn.textContent = '‹';
+          prevBtn.onclick = () => { page--; render(); };
+          pagination.appendChild(prevBtn);
+        }
+        
+        // Page numbers
+        const range = 2;
+        let startPage = Math.max(1, page - range);
+        let endPage = Math.min(totalPages, page + range);
+        
+        if (startPage > 1) {
+          const dots = document.createElement('span');
+          dots.textContent = '...';
+          dots.style.padding = '5px';
+          pagination.appendChild(document.createTextNode('...'));
+        }
+        
+        for (let i = startPage; i <= endPage; i++) {
           const btn = document.createElement('button');
           btn.textContent = i;
           btn.className = i === page ? 'active' : '';
           btn.onclick = () => { page = i; render(); };
           pagination.appendChild(btn);
         }
-        if (totalPages > 10) {
-          const span = document.createElement('span');
-          span.textContent = `... of ${totalPages}`;
-          pagination.appendChild(span);
+        
+        if (endPage < totalPages) {
+          pagination.appendChild(document.createTextNode('...'));
+        }
+        
+        // Next/Last
+        if (page < totalPages) {
+          const nextBtn = document.createElement('button');
+          nextBtn.textContent = '›';
+          nextBtn.onclick = () => { page++; render(); };
+          pagination.appendChild(nextBtn);
+          
+          const lastBtn = document.createElement('button');
+          lastBtn.textContent = '»';
+          lastBtn.onclick = () => { page = totalPages; render(); };
+          pagination.appendChild(lastBtn);
         }
       }
     }
     
+    function escapeHtml(text) {
+      const div = document.createElement('div');
+      div.textContent = text;
+      return div.innerHTML;
+    }
+    
+    function randomProblem() {
+      if (filtered.length === 0) return;
+      const randomIndex = Math.floor(Math.random() * filtered.length);
+      const p = filtered[randomIndex];
+      const ghUrl = `https://github.com/alexeybutyrev/leetcode-solutions/tree/master/solutions/${p.id}.%20${encodeURIComponent(p.title)}`;
+      window.open(ghUrl, '_blank');
+    }
+    
+    // Event listeners
     document.getElementById('search').addEventListener('input', filter);
     document.getElementById('difficulty-filter').addEventListener('change', filter);
     document.getElementById('topic-filter').addEventListener('change', filter);
+    document.getElementById('language-filter').addEventListener('change', filter);
+    document.getElementById('random-btn').addEventListener('click', randomProblem);
+    
+    // Sort on header click
+    document.querySelectorAll('th.sortable').forEach(th => {
+      th.addEventListener('click', () => {
+        const field = th.dataset.sort;
+        if (sortField === field) {
+          sortDir = sortDir === 'asc' ? 'desc' : 'asc';
+        } else {
+          sortField = field;
+          sortDir = 'asc';
+        }
+        sortProblems();
+        render();
+      });
+    });
+    
+    // Keyboard shortcuts
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'r' && !e.ctrlKey && !e.metaKey && document.activeElement.tagName !== 'INPUT') {
+        randomProblem();
+      }
+    });
   </script>
 </body>
 </html>
