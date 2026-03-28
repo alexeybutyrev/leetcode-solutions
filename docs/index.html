@@ -33,6 +33,22 @@
     }
     .stat-card .number { font-size: 1.8em; font-weight: bold; color: #58a6ff; }
     .stat-card .label { color: #8b949e; font-size: 0.85em; }
+    .stat-card .progress-container {
+      margin-top: 8px;
+      height: 4px;
+      background: #30363d;
+      border-radius: 2px;
+      overflow: hidden;
+    }
+    .stat-card .progress-bar {
+      height: 100%;
+      border-radius: 2px;
+      transition: width 0.3s ease;
+    }
+    .stat-card .progress-easy { background: #3fb950; }
+    .stat-card .progress-medium { background: #d29922; }
+    .stat-card .progress-hard { background: #f85149; }
+    .stat-card .progress-total { background: #58a6ff; }
     
     .filters {
       display: flex;
@@ -207,18 +223,22 @@
     <div class="stat-card">
       <div class="number" id="total-problems">0</div>
       <div class="label">Showing</div>
+      <div class="progress-container"><div class="progress-bar progress-total" id="progress-total"></div></div>
     </div>
     <div class="stat-card">
       <div class="number" id="easy-count">0</div>
       <div class="label">Easy</div>
+      <div class="progress-container"><div class="progress-bar progress-easy" id="progress-easy"></div></div>
     </div>
     <div class="stat-card">
       <div class="number" id="medium-count">0</div>
       <div class="label">Medium</div>
+      <div class="progress-container"><div class="progress-bar progress-medium" id="progress-medium"></div></div>
     </div>
     <div class="stat-card">
       <div class="number" id="hard-count">0</div>
       <div class="label">Hard</div>
+      <div class="progress-container"><div class="progress-bar progress-hard" id="progress-hard"></div></div>
     </div>
   </div>
   
@@ -334,9 +354,21 @@
       });
     
     function updateStats() {
-      document.getElementById('easy-count').textContent = filtered.filter(p => p.difficulty === 'Easy').length;
-      document.getElementById('medium-count').textContent = filtered.filter(p => p.difficulty === 'Medium').length;
-      document.getElementById('hard-count').textContent = filtered.filter(p => p.difficulty === 'Hard').length;
+      const total = filtered.length;
+      const easy = filtered.filter(p => p.difficulty === 'Easy').length;
+      const medium = filtered.filter(p => p.difficulty === 'Medium').length;
+      const hard = filtered.filter(p => p.difficulty === 'Hard').length;
+      const totalAll = problems.length;
+      
+      document.getElementById('easy-count').textContent = easy;
+      document.getElementById('medium-count').textContent = medium;
+      document.getElementById('hard-count').textContent = hard;
+      
+      // Update progress bars
+      document.getElementById('progress-total').style.width = `${(total / totalAll) * 100}%`;
+      document.getElementById('progress-easy').style.width = `${(easy / total) * 100}%`;
+      document.getElementById('progress-medium').style.width = `${(medium / total) * 100}%`;
+      document.getElementById('progress-hard').style.width = `${(hard / total) * 100}%`;
     }
     
     function filter() {
