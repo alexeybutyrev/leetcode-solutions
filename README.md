@@ -9,9 +9,11 @@
 
 | Metric | Count |
 |--------|-------|
-| **Problems Solved** | 1,946 |
-| **Solutions** | 1,947 |
-| **READMEs** | 1,936 |
+| **Problems on LeetCode** | 2,529 |
+| **Solutions in Repo** | 1,946 |
+| **Solution Files** | 1,947 |
+
+> ⚠️ **Note:** ~583 solutions couldn't be fetched because LeetCode's API doesn't return code for older submissions. The metadata exists, but the actual code is no longer stored by LeetCode.
 
 ## 🗂️ Structure
 
